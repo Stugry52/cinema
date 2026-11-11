@@ -1,11 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кинотеатр «Октябрь»</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Привет</h1>
+
+  <!-- Фонарик -->
+  <div class="spotlight" id="spotlight"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <div class="logo">Октябрь</div>
+      <nav>
+        <ul>
+          <li><a href="#movies">Афиша</a></li>
+          <li><a href="#about">О кинотеатре</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="badge">Кинотеатр с 1927 года</div>
+      <h1>Большое кино<br><span class="accent">начинается здесь</span></h1>
+      <p>Пять залов, лазерная проекция 4K, звук Dolby Atmos и лучшие премьеры недели. Выберите сеанс и займите своё кресло.</p>
+      <a href="#movies" class="btn">Смотреть афишу</a>
+      <a href="#about" class="btn ghost">О кинотеатре</a>
+    </div>
+  </section>
+
+  <!-- MOVIES -->
+  <section id="movies">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Сейчас в прокате</div>
+        <h2>Афиша</h2>
+        <p>Актуальные сеансы на сегодня. Нажмите «Купить билет», чтобы выбрать место.</p>
+      </div>
+      <div class="movies" id="moviesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Почему мы</div>
+        <h2>Кинотеатр «Октябрь»</h2>
+        <p>Мы совмещаем историю и технологии: легендарное здание и современное оборудование мирового уровня.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">🎥</div>
+          <h3>Лазер 4K</h3>
+          <p>Кристально чистая картинка и яркость, которой хватит даже для 3D-сеансов.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🔊</div>
+          <h3>Dolby Atmos</h3>
+          <p>Объёмный звук, который двигается вокруг вас вместе с героями на экране.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🛋️</div>
+          <h3>Комфортные кресла</h3>
+          <p>Широкие кресла с подлокотниками и увеличенным пространством для ног.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🍿</div>
+          <h3>Свежий попкорн</h3>
+          <p>Готовим прямо перед сеансом — классика, карамель и сырный вкус.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contacts">
+    <div class="footer-inner">
+      <div>
+        <div class="logo footer-logo">Октябрь</div>
+        <p>Кинотеатр «Октябрь» — место, где кино становится событием.</p>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <p>ул. Кино, 12, Москва</p>
+        <p>+7 (495) 123-45-67</p>
+        <p>info@oktyabr-cinema.ru</p>
+      </div>
+      <div>
+        <h4>Режим работы</h4>
+        <p>Пн–Чт: 10:00 – 23:00</p>
+        <p>Пт–Вс: 10:00 – 01:00</p>
+      </div>
+    </div>
+    <div class="copyright">© 2024 Кинотеатр «Октябрь». Все права защищены.</div>
+  </footer>
+
+  <!-- =====================  МОДАЛКА БРОНИРОВАНИЯ  ===================== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="booking-modal">
+      <button class="modal-close" id="closeBtn" aria-label="Закрыть">✕</button>
+
+      <!-- Шаг 1: Выбор сеанса -->
+      <div class="booking-step" id="stepShowtime">
+        <h3 id="bookingTitle">Выбор сеанса</h3>
+        <p class="modal-meta" id="bookingMeta"></p>
+        <div class="showtime-list" id="showtimeList"></div>
+      </div>
+
+      <!-- Шаг 2: Выбор мест -->
+      <div class="booking-step" id="stepSeats" hidden>
+        <div class="hall-header">
+          <button class="back-btn" id="backToShowtimes">← Сеансы</button>
+          <div class="hall-info" id="hallInfo"></div>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item"><span class="legend-seat type-standard"></span>Стандарт <b>450 ₽</b></div>
+          <div class="legend-item"><span class="legend-seat type-comfort"></span>Комфорт <b>650 ₽</b></div>
+          <div class="legend-item"><span class="legend-seat type-vip"></span>VIP <b>1200 ₽</b></div>
+          <div class="legend-item"><span class="legend-seat type-selected"></span>Выбрано</div>
+          <div class="legend-item"><span class="legend-seat type-taken"></span>Занято</div>
+        </div>
+
+        <div class="hall-scroll">
+          <div class="screen-label">Экран</div>
+          <div class="screen"></div>
+          <div class="hall" id="hallGrid"></div>
+          <div class="row-labels" id="rowLabels"></div>
+        </div>
+
+        <div class="booking-summary">
+          <div class="summary-info">
+            <div>Мест: <span id="seatCount">0</span></div>
+            <div class="summary-total">Итого: <span class="sum" id="totalSum">0 ₽</span></div>
+          </div>
+          <button class="btn" id="confirmBtn" disabled>К оплате</button>
+        </div>
+      </div>
+
+      <!-- Шаг 3: Подтверждение -->
+      <div class="booking-step" id="stepConfirm" hidden>
+        <h3>Готово к оплате 🎟️</h3>
+        <div class="ticket-preview" id="ticketPreview"></div>
+        <div class="modal-actions">
+          <button class="btn ghost" id="backToSeats">Назад</button>
+          <button class="btn" id="payBtn">Оплатить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">Билеты успешно куплены!</div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
